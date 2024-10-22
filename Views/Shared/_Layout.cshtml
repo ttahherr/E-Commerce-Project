@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Movie</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/E_Commerce_Project.styles.css" asp-append-version="true" />
+	<link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+	<link href="~/css/bootstrap.min (1).css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <style>
+            /* Navbar styles */
+            .navbar {
+                background-color: #f8f9fa; /* Light background color */
+                border-bottom: 1px solid #e7e7e7; /* Subtle bottom border */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            }
+
+            .nav-link {
+                transition: color 0.3s ease; /* Smooth color transition */
+            }
+
+                .nav-link:hover {
+                    color: #007bff; /* Change text color on hover */
+                    text-decoration: underline; /* Underline on hover */
+                }
+
+                .nav-link.active {
+                    font-weight: bold; /* Bold text for active link */
+                    color: #0056b3; /* Darker color for active link */
+                }
+
+            /* Toggler button */
+            .navbar-toggler {
+                border-color: #007bff; /* Toggler button border color */
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 123, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom color for toggler icon */
+            }
+        </style>
+
+        <nav class="navbar navbar-expand-sm navbar-light mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GetMovie</a> <!-- Add brand name -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Actor" asp-action="GetHomePage">Actors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="GetHomePage">Movies</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            Get Movie
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

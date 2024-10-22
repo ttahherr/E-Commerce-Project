@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Movie>
+
+<div class="row ">
+    @foreach (var movie in Model)
+    {
+
+        <style>
+            .card {
+                transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transition for scale and shadow */
+            }
+
+                .card:hover {
+                    transform: scale(1.05); /* Slightly scale up the card on hover */
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+                }
+
+            .btn {
+                transition: background-color 0.3s ease, color 0.3s ease; /* Transition for button colors */
+            }
+
+                .btn:hover {
+                    background-color: #007bff; /* Change background color on hover */
+                    color: white; /* Change text color on hover */
+                }
+        </style>
+
+        <div class="card mb-4 me-4 overflow-hidden" style="width: 18rem; height: 45rem;">
+            <img src="@movie.ImagePath" class="card-img-top" alt="@movie.Name" style="height: 23rem; object-fit: contain;">
+            <div class="card-body overflow-hidden" style="height: 20rem;">
+                <p class="card-text">@movie.Description</p>
+            </div>
+            <div class="card-body" style="height: 5rem;">
+                <a asp-controller="Movie" asp-action="GetDetailsPage" asp-route-id="@movie.Id" class="btn btn-outline-info">Details</a>
+                <a asp-controller="Movie" asp-action="GetDeletePage" asp-route-id="@movie.Id" class="btn btn-outline-warning">Delete</a>
+            </div>
+        </div>
+
+
+        
+    }
+</div>
+
+<a class="btn btn-info mt-5" asp-controller="Movie" asp-action="GetCreatPage">Add Movie</a>

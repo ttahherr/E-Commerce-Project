@@ -1,0 +1,52 @@
+﻿@model Actor 
+
+
+<div class="row">
+
+	<form method="post" asp-controller="Actor" asp-Action="CreatNew" class="col-4" enctype="multipart/form-data">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+
+
+
+		<div>
+			<label class="form-lable">@Html.DisplayNameFor(Actor => Actor.Name)</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+
+		</div>
+
+
+		<div>
+		<label class="form-lable">@Html.DisplayNameFor(Actor => Actor.ImageFile)</label>
+			<input type="file" asp-for="ImageFile" class="form-control" accept="image/*" id="ImageFile" onchange="PreViewImage()" />
+			<span asp-validation-for="ImageFile" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label class="form-lable">@Html.DisplayNameFor(Actor => Actor.Info)</label>
+			<input asp-for="Info" class="form-control" />
+			<span asp-validation-for="Info" class="text-danger"></span>
+		</div>
+		
+		
+		<div>
+			<label class="form-lable">@Html.DisplayNameFor(Actor => Actor.Nationality)</label>
+			<input asp-for="Nationality" class="form-control" />
+			<span asp-validation-for="Nationality" class="text-danger"></span>
+		</div>
+
+		<div>
+			<label class="form-label">@Html.DisplayNameFor(Actor =>Actor.Movie)</label>
+			<select multiple asp-for="_MovieItemsID"
+					asp-items="@(new SelectList(ViewBag.Movies,"Id" , "Name"))"
+					class="form-control" aria-label=" Default select example">
+				<option selected disabled>--select Movie--</option>
+			</select>
+			<span asp-validation-for="Movie" class="text-danger"></span>
+		</div>
+
+		<button type="submit" class="btn btn-primary mt-2">Add</button>
+
+	</form>
+</div>

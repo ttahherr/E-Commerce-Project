@@ -1,0 +1,78 @@
+﻿@model Movie
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Movie => Movie.Name)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Movie => Movie.Name)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Movie => Movie.Description)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Movie => Movie.Description)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Movie => Movie.Category)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Movie => Movie.Category)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Movie => Movie.StartDate)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Movie => Movie.StartDate)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Movie => Movie.EndDate)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Movie => Movie.EndDate)</dd>
+
+                <dt class="col-sm-4 fw-bold">Actors</dt>
+                <dd class="col-sm-8">
+                    <ul class="list-group">
+                        @foreach (var Actor in Model._Actors)
+                        {
+                            <li class="list-group-item transition-item">
+                                <a class="text-decoration-none" asp-action="GetDetailsPage" asp-controller="Actor" asp-route-id="@Actor.Id">
+                                    Actor Name: @Actor.Name<br />
+                                    Nationality: @Actor.Nationality
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <img class="img-fluid rounded transition-image" src="@Model.ImagePath" alt="Movie Image" style="object-fit:contain; max-height: 300px;" />
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-controller="Movie" asp-action="GetHomePage" class="btn btn-primary transition-button">
+            Go Back
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Add transition effects */
+    .transition-item {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .transition-item:hover {
+            background-color: #f0f0f0; /* Light grey background on hover */
+            transform: scale(1.02); /* Slightly scale up */
+        }
+
+    .transition-button {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .transition-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly scale up */
+        }
+
+    .transition-image {
+        transition: transform 0.3s ease;
+    }
+
+        .transition-image:hover {
+            transform: scale(1.1); /* Slightly enlarge the image on hover */
+        }
+</style>

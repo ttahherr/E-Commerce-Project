@@ -1,0 +1,61 @@
+﻿@model Actor
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Actor => Actor.Name)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Actor => Actor.Name)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Actor => Actor.Info)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Actor => Actor.Info)</dd>
+
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Actor => Actor.Nationality)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Actor => Actor.Nationality)</dd>
+                <dt class="col-sm-4 fw-bold">@Html.DisplayNameFor(Actor => Actor.Movie.Name)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(Actor => Actor.Movie.Name)</dd>
+
+      
+            </dl>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <img class="img-fluid rounded transition-image" src="@Model.ImagePath" alt="Movie Image" style="object-fit:contain; max-height: 300px;" />
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-controller="Actor" asp-action="GetHomePage" class="btn btn-primary transition-button">
+            Go Back
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Add transition effects */
+    .transition-item {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .transition-item:hover {
+            background-color: #f0f0f0; /* Light grey background on hover */
+            transform: scale(1.02); /* Slightly scale up */
+        }
+
+    .transition-button {
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .transition-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly scale up */
+        }
+
+    .transition-image {
+        transition: transform 0.3s ease;
+    }
+
+        .transition-image:hover {
+            transform: scale(1.1); /* Slightly enlarge the image on hover */
+        }
+</style>

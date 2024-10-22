@@ -1,0 +1,91 @@
+﻿@using System.Globalization
+@model IEnumerable<Actor>
+
+@if (Model.Count() > 0)
+{
+    <style>
+        /* Card container styles */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap; /* Wrap cards to the next line */
+            gap: 20px; /* Space between cards */
+            justify-content: center; /* Center the cards */
+        }
+
+        /* Card styles */
+        .card {
+            width: 18rem; /* Fixed card width */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transition for scale and shadow */
+        }
+
+            .card:hover {
+                transform: scale(1.05); /* Slightly scale up the card on hover */
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+            }
+
+        /* Image styles */
+        .card-img-top {
+            height: 15rem; /* Fixed height for the image */
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        /* Button styles */
+        .btn {
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transition for button colors and scale */
+        }
+
+            .btn:hover {
+                transform: scale(1.1); /* Slightly scale the button on hover */
+                background-color: #0056b3; /* Change background color on hover */
+                color: white; /* Change text color on hover */
+            }
+
+        /* Caption styles */
+        .caption {
+            text-align: center;
+            color: brown;
+            font-size: 24px;
+            margin-bottom: 20px; /* Space below the caption */
+        }
+    </style>
+
+    <div class="caption">Actors</div>
+    <div class="card-container">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <img src="@item.ImagePath" class="card-img-top" alt="Alternate Text" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <div class="btn-group" style="width: 100%;">
+                        <a asp-controller="Actor" asp-action="GetDetailsPage" asp-route-id="@item.Id" class="btn btn-success" title="Details">
+                            <i class="bi bi-info-circle-fill"></i>
+                        </a>
+                        <a asp-controller="Actor" asp-action="GetDeletePage" asp-route-id="@item.Id" class="btn btn-danger" title="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a asp-controller="Actor" asp-action="GetEditPage" asp-route-id="@item.Id" class="btn btn-primary" title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+}
+else
+{
+	<h1 style="color:azure ; background-color:crimson">There Is No Data</h1>
+}
+
+
+<a asp-controller="Actor" asp-action="GetCreatPage" class="btn btn-success">Create New</a>
+
+
+
+
+

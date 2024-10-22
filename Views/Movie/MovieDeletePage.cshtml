@@ -1,0 +1,34 @@
+﻿@model Movie
+
+
+
+<div class="row">
+	<dl class="row col-9">
+		<dt class="col-3">@Html.DisplayNameFor(moive => moive.Name)</dt>
+		<dd class="col-9">@Html.DisplayFor(moive => moive.Name)</dd>
+		<dt class="col-3">@Html.DisplayNameFor(moive => moive.Description)</dt>
+		<dt class="col-9">@Html.DisplayFor(moive => moive.Description)</dt>
+		<dt class="col-3">@Html.DisplayNameFor(moive => moive.Category)</dt>
+		<dt class="col-9">@Html.DisplayFor(moive => moive.Category)</dt>
+		<dt class="col-3">@Html.DisplayNameFor(moive => moive.StartDate)</dt>
+		<dt class="col-9">@Html.DisplayFor(moive => moive.StartDate)</dt>
+		<dt class="col-3">@Html.DisplayNameFor(moive => moive.EndDate)</dt>
+		<dt class="col-9">@Html.DisplayFor(moive => moive.EndDate)</dt>
+	</dl>
+
+	<img class="col-2" src="@Model.ImagePath" alt="Alternate Text" style="object-fit:contain" />
+</div>
+
+<form method="post" asp-action="DeleteCurrent" asp-controller="Movie" class="col-3">
+	<input type="hidden" asp-for="Id" />
+@* 	<input type="hidden" asp-for="ActorPicturePath" /> *@
+
+	<button type="submit" class="btn btn-danger col-12 mb-1">Confirm Delete</button>
+</form>
+
+@* This code make us bake to the previous bage (index view)*@
+<a asp-controller="Movie"
+   asp-action="GetHomePage" class="btn btn-primary col-3">
+	Go-Back
+
+</a>

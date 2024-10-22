@@ -1,0 +1,62 @@
+﻿@model Movie
+
+<div class="row">
+
+	<form method="post" asp-controller="Movie" asp-Action="CreatNew" class="col-4" enctype="multipart/form-data">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+
+
+
+		<div>
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.Name)</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+
+		</div>
+
+		<div class="mt-4">
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.Description)</label>
+			<input asp-for="Description" class="form-control" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+
+		<div class="mt-4">
+
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.StartDate)</label>
+			<input type="datetime-local" asp-for="StartDate" class="form-control" />
+			<span asp-validation-for="StartDate" class="text-danger"></span>
+		</div>
+
+		<div class="mt-4">
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.EndDate)</label>
+			<input type="datetime-local" asp-for="EndDate" class="form-control" />
+			<span asp-validation-for="EndDate" class="text-danger"></span>
+		</div>
+
+		<div class="mt-4">
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.Category)</label>
+			<select asp-for="Category" class="form-select" aria-label="Default select example">
+				<option selected>--Select Category--</option>
+				<option value="War">War</option>
+				<option value="Historical">Historical</option>
+				<option value="Fantasy">Fantasy</option>
+				<option value="Drama">Drama</option>
+				<option value="Crime">Crime</option>
+				<option value="Comedy">Comedy</option>
+				<option value="Action">Action</option>
+				<option value="Animation">Animation</option>
+
+			</select>
+		</div>
+
+
+		<div>
+			<label class="form-lable">@Html.DisplayNameFor(Movie => Movie.ImageFile)</label>
+			<input type="file" asp-for="ImageFile" class="form-control" accept="image/*" id="ImageFile" onchange="PreViewImage()" />
+			<span asp-validation-for="ImageFile" class="text-danger"></span>
+		</div>
+
+		<button type="submit" class="btn btn-primary mt-4">Create</button>
+	</form>
+</div>
